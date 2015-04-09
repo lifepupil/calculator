@@ -12,6 +12,8 @@ function init(){
   $('.operator').click(clickOperator);
   $('#equals').click(clickEqual);
   $('#changeSign').click(clickChangeSign);
+  $('#clear').click(clearClicked);
+  $('#zero').click(clickZero);
 }
 
 function clickNumber(){
@@ -19,7 +21,13 @@ function clickNumber(){
   var display = $('#screen').text();
   var output = (display === '0') ? num : display + num;
   $('#screen').text(output);
-  // #debugger;
+}
+
+function clickZero(){
+  var num = $(this).text();
+  var display = $('#screen').text();
+  var output = (display === '0') ? num : display + num;
+  $('#screen').text(output);
 }
 
 function clickDecimal(){
@@ -59,12 +67,17 @@ function clickEqual() {
 }
 
 function clickChangeSign() {
-  screenNum = $('#screen').text();
+  var screenNum = $('#screen').text();
   var tempNum = parseFloat(screenNum) * -1;
   $('#screen').text(tempNum);
   screenNum = $('#screen').text();
 }
 
+function clearClicked() {
+  $('#screen').text('0');
+  displayNum = '';
+  operatorStr = '';
+}
 
 
 //
